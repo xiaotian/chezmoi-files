@@ -1,0 +1,20 @@
+[user]
+	name = Xiaotian Guo
+	email = guoxiaotian@gmail.com
+[core]
+	editor = vim
+	excludesfile = /Users/xiaotian/.gitignore_global
+[alias]
+	co = checkout
+	ci = commit
+	s = status
+	br = branch
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Users/xiaotian/Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/xiaotian/.stCommitMsg

@@ -61,6 +61,8 @@ zstyle ':prezto:load' pmodule \
 #
 # Editor
 #
+# Set the characters that are considered to be part of a word.
+zstyle ':prezto:module:editor' wordchars '*?_-.[]~&;!#$%^(){}<>'
 
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':prezto:module:editor' key-bindings 'vi'
@@ -101,6 +103,19 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 #
 # History Substring Search
 #
+
+# Enable search case-sensitivity.
+# zstyle ':prezto:module:history-substring-search' case-sensitive 'yes'
+
+# Enable search for fuzzy matches.
+# zstyle ':prezto:module:history-substring-search' fuzzy 'yes'
+
+# Enable search uniqueness.
+# zstyle ':prezto:module:history-substring-search' unique 'yes'
+
+# Enable prefixed search.
+# zstyle ':prezto:module:history-substring-search' prefixed 'yes'
+
 
 # Set the query found color.
 # zstyle ':prezto:module:history-substring-search:color' found ''

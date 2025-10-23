@@ -3,12 +3,47 @@
 .DS_Store
 Thumbs.db
 
+# Operating System Files
+.DS_Store # macOS
+Thumbs.db # Windows
+desktop.ini # Windows
+
+# IDE/Editor Files
 # Editor/IDE
 *.swp
 *.swo
 *~
-.vscode/
-.idea/
+.idea/ # IntelliJ IDEA
+.vscode/ # VS Code
+*.iml # IntelliJ IDEA module files
+*.ipr # IntelliJ IDEA project files
+*.iws # IntelliJ IDEA workspace files
+*.sublime-project # Sublime Text
+*.sublime-workspace # Sublime Text
+.project # Eclipse
+.classpath # Eclipse
+.settings/ # Eclipse
+ehcache.xml # Eclipse
+
+# Build/Dependency Files
+node_modules/ # Node.js
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+vendor/ # PHP Composer
+target/ # Java Maven/Gradle
+build/ # Various build systems
+*.log # Log files
+*.bak # Backup files
+*.swp # Vim swap files
+*.swo # Vim swap files
+
+# Temporary/Cache Files
+*~ # Emacs backup files
+*.tmp
+*.cache
 
 # Python
 __pycache__/
@@ -16,13 +51,7 @@ __pycache__/
 *.pyo
 *.pyd
 *.egg-info/
-
-# Node
-node_modules/
-npm-debug.log
-yarn-debug.log
-yarn-error.log
-.pnpm-debug.log
+.pytest_cache/ # Python pytest
 
 # Compiled
 *.o
@@ -45,4 +74,3 @@ yarn-error.log
 # Environment
 .env
 .env.*
-

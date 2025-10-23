@@ -40,9 +40,6 @@ AUTOENV_FILE_ENTER=.env.enter
 AUTOENV_HANDLE_LEAVE=1
 AUTOENV_FILE_LEAVE=.env.leave
 
-
-GEMINI_API_KEY=""
-
 eval "$(starship init zsh)"
 
 alias y='yazi'
@@ -57,3 +54,9 @@ alias idfinit='source ~/tools/esp/esp-idf/export.sh'
 
 # ====================================================
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+
+if [[ -s ".secret_keys" ]]; then
+  source .secret_keys
+fi
+

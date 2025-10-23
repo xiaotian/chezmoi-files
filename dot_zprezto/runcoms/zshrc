@@ -1,0 +1,59 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+source ~/.zplug/init.zsh
+
+# Plugins
+
+zplug "plugins/git",   from:oh-my-zsh
+# zplug "plugins/osx",   from:oh-my-zsh
+# zplug "zsh-users/zsh-autosuggestions"
+# zplug "clvv/fasd", as:command, use:fasd #, hook-load:"unalias zz"
+
+# ENHANCD_DISABLE_DOT=1
+# ENHANCD_DISABLE_HOME=0
+# zplug "b4b4r07/enhancd", use:init.sh
+#
+# zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*darwin*"
+# zplug "junegunn/fzf", use:"shell/*.zsh"
+# zplug "Peltoche/lsd" # fancy ls command, with icon, not necessary.
+zplug "Tarrasch/zsh-autoenv"
+
+zplug load
+
+HISTFILE=~/.zsh_history
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
+
+#zsh-autoenv
+AUTOENV_FILE_ENTER=.env.enter
+AUTOENV_HANDLE_LEAVE=1
+AUTOENV_FILE_LEAVE=.env.leave
+
+
+GEMINI_API_KEY=""
+
+eval "$(starship init zsh)"
+
+alias y='yazi'
+alias lzd='lazydocker'
+alias gu='gitui -t catppuccin-macchiato.ron'
+alias cm='chezmoi'
+alias blr='/Applications/Blender.app/Contents/MacOS/Blender'
+
+# ========================= ESP32 ====================
+
+alias idfinit='source ~/tools/esp/esp-idf/export.sh'
+
+# ====================================================
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

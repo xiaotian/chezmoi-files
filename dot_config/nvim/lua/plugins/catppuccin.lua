@@ -3,6 +3,16 @@ return {
 	name = "catppuccin", 
 	priority = 1000,
 	config = function()
-		vim.cmd.colorscheme "catppuccin"
+		require("catppuccin").setup({
+			auto_integrations = true,
+			color_overrides = {
+			mocha = {
+					base = "#000000",
+					mantle = "#0d0d0d",
+					crust = "#000000",
+				},
+			}
+		})
+		vim.cmd.colorscheme "catppuccin-mocha"
 	end
 }

@@ -25,7 +25,7 @@ zplug "plugins/git",   from:oh-my-zsh
 # zplug "b4b4r07/enhancd", use:init.sh
 #
 # zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*darwin*"
-# zplug "junegunn/fzf", use:"shell/*.zsh"
+zplug "junegunn/fzf", use:"shell/*.zsh"
 # zplug "Peltoche/lsd" # fancy ls command, with icon, not necessary.
 zplug "Tarrasch/zsh-autoenv"
 

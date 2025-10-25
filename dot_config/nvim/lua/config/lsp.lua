@@ -9,6 +9,7 @@
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('py_ls')
 vim.lsp.enable('rust_ls')
+vim.lsp.enable('ts_ls')
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)

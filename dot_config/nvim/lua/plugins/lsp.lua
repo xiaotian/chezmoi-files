@@ -10,7 +10,7 @@ return {
     dependencies = { "williamboman/mason.nvim" },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright" },
+        ensure_installed = { "lua_ls", "pyright", "rust_analyzer" },
         handlers = {
           -- Default handler for all servers
           function(server_name)

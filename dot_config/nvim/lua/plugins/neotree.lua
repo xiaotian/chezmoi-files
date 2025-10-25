@@ -9,7 +9,16 @@ return {
 	lazy = false, -- neo-tree will lazily load itself,
 	config = function()
 		vim.keymap.set('n', '<leader>n', '<cmd>Neotree toggle<CR>', { desc = 'Toggle Neo-tree' })	
-	end
+		vim.keymap.set('n', '<leader>.', '<cmd>Neotree reveal<CR>', { desc = 'Reveal current buffer in Neotree' })	
 
+        require("neo-tree").setup({
+            window = {
+                width = function()
+                    local width = math.floor(vim.o.columns * 0.25)  -- 25% of screen
+                    return math.max(10, math.min(width, 60))        -- Between 30 and 50 columns
+                end
+            }
+        })
+	end
 }
 

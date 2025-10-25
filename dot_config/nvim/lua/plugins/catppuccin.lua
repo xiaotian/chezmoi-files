@@ -7,7 +7,7 @@ return {
 			auto_integrations = true,
 			color_overrides = {
 			mocha = {
-					base = "#000000",
+					base = "#111111",
 					mantle = "#0d0d0d",
 					crust = "#000000",
 				},

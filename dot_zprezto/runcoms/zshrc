@@ -47,6 +47,7 @@ alias lzd='lazydocker'
 alias lzg='lazygit'
 alias cm='chezmoi'
 alias blr='/Applications/Blender.app/Contents/MacOS/Blender'
+alias vim='nvim'
 
 # ========================= ESP32 ====================
 

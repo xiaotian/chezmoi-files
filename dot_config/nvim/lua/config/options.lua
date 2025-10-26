@@ -26,3 +26,8 @@ vim.opt.sidescrolloff = 4      -- Keep 5 columns visible when scrolling horizont
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
+
+-- for neovide
+if vim.g.neovide then
+  vim.opt.guifont = "MesloLGSDZ Nerd Font Mono:h14"
+end

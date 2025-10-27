@@ -18,6 +18,7 @@ require("config.global")
 require("config.options")
 require("config.lsp")
 require("config.keymap")
+require("config.diagnostics")
 
 require("lazy").setup({
   spec = {

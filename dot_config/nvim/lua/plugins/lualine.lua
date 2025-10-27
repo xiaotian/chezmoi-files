@@ -14,7 +14,7 @@ return {
       text_dark  = "#54622D",
     }
 
-    theme = {
+    local theme = {
       normal = {
         b = { fg = colors.green, bg = colors.black },
         a = { fg = colors.text_dark, bg = colors.green, gui = 'bold' },

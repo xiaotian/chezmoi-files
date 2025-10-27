@@ -30,10 +30,10 @@ return {
           information = { "italic" },
         },
         underlines = {
-          errors = { "underline" },
-          hints = { "underline" },
-          warnings = { "underline" },
-          information = { "underline" },
+          -- errors = { "underline" },
+          -- hints = { "underline" },
+          -- warnings = { "underline" },
+          -- information = { "underline" },
         },
         inlay_hints = {
           background = true,

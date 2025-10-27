@@ -44,10 +44,11 @@ eval "$(starship init zsh)"
 
 alias y='yazi'
 alias lzd='lazydocker'
-alias lzg='lazygit'
+alias lg='lazygit'
 alias cm='chezmoi'
 alias blr='/Applications/Blender.app/Contents/MacOS/Blender'
 alias vim='nvim'
+alias vi='nvim'
 
 # ========================= ESP32 ====================
 

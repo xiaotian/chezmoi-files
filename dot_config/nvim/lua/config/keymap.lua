@@ -1,4 +1,3 @@
-
 -- keymap
 --------------------------------------------------------------------------------
 
@@ -35,8 +34,35 @@ vim.keymap.set('n', '<leader>l', ':listchars!<CR>', { desc = 'Toggle [l]istchars
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
--- formatting
-vim.keymap.set('n', '<leader>F', ":lua require('conform').format()<cr>", {desc = 'Format file'})
-
--- execute selected lua code
-vim.keymap.set("v", "<C-x>", ":'<,'>lua<CR>", { desc = "Run selected Lua code" })
+-- Lua execution 
+vim.keymap.set("n", "<leader>x", function()
+  local buf = vim.api.nvim_get_current_buf()
+  local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+  local chunk, err = load(table.concat(lines, "\n"), "buffer", "t")
+  if not chunk then
+    vim.notify("Error: " .. err, vim.log.levels.ERROR)
+    return
+  end
+  local ok, result = pcall(function()
+    -- capture printed output
+    local output = {}
+    local _print = print
+    print = function(...)
+      local msg = {}
+      for i = 1, select("#", ...) do
+        table.insert(msg, tostring(select(i, ...)))
+      end
+      table.insert(output, table.concat(msg, "\t"))
+    end
+    chunk()
+    print = _print
+    return table.concat(output, "\n")
+  end)
+  if not ok then
+    vim.notify("Runtime error: " .. result, vim.log.levels.ERROR)
+  else
+    vim.notify(result ~= "" and result or "[no output]", vim.log.levels.INFO)
+  end
+end, { desc = "Run current buffer as Lua" })
+vim.keymap.set("n", "<leader>x", ":.lua<CR>")
+vim.keymap.set("v", "<leader>x", ":lua<CR>")

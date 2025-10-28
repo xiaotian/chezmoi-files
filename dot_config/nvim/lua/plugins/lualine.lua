@@ -1,47 +1,124 @@
+-- Set lualine as statusline
 return {
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     local colors = {
-      gray       = '#3C3C3C',
-      teak       = '#D75B7A',
-      orange     = '#63B4D6',
-      yellow     = '#D79920',
-      black      = '#262626',
-      white      = '#D4D4D4',
-      green      = '#A1D6B2',
-      text       = "#E4E4DD",
-      text_dark  = "#54622D",
+      blue   = '#7091D0',
+      green  = '#B0C489',
+      purple = '#9B80C6',
+      cyan   = '#56b6c2',
+      yellow = '#DCB05C',
+      fg     = '#abb2bf',
+      bg     = '#282c34',
+      gray1  = '#828997',
+      gray2  = '#2C2D30',
+      gray3  = '#444444',
     }
 
-    local theme = {
+    local onedark_theme = {
       normal = {
-        b = { fg = colors.green, bg = colors.black },
-        a = { fg = colors.text_dark, bg = colors.green, gui = 'bold' },
-        c = { fg = colors.white, bg = colors.black },
+        a = { fg = colors.bg, bg = colors.green, gui = 'bold' },
+        b = { fg = colors.fg, bg = colors.gray3 },
+        c = { fg = colors.fg, bg = colors.gray2 },
       },
-      visual = {
-        b = { fg = colors.yellow, bg = colors.black },
-        a = { fg = colors.text, bg = colors.yellow, gui = 'bold' },
-      },
+      command  = { a = { fg = colors.bg, bg = colors.yellow, gui = 'bold' } },
+      insert   = { a = { fg = colors.bg, bg = colors.blue,   gui = 'bold' } },
+      visual   = { a = { fg = colors.bg, bg = colors.purple, gui = 'bold' } },
+      terminal = { a = { fg = colors.bg, bg = colors.cyan,   gui = 'bold' } },
+      replace  = { a = { fg = colors.bg, bg = colors.yellow, gui = 'bold' } },
       inactive = {
-        b = { fg = colors.black, bg = colors.orange },
-        a = { fg = colors.white, bg = colors.gray, gui = 'bold' },
-      },
-      replace = {
-        b = { fg = colors.teak, bg = colors.black },
-        a = { fg = colors.text, bg = colors.teak, gui = 'bold' },
-        c = { fg = colors.white, bg = colors.black },
-      },
-      insert = {
-        b = { fg = colors.orange, bg = colors.black },
-        a = { fg = colors.text, bg = colors.orange, gui = 'bold' },
-        c = { fg = colors.white, bg = colors.black },
+                   a = { fg = colors.gray1, bg = colors.bg,  gui = 'bold' },
+                   b = { fg = colors.gray1, bg = colors.bg },
+                   c = { fg = colors.gray1, bg = colors.gray2 },
       },
     }
-    require('lualine').setup({
-      options = { theme = theme }
-    })
-  end
 
+    -- Import color theme based on environment variable NVIM_THEME
+    local env_var_nvim_theme = "onedark" -- os.getenv 'NVIM_THEME' or 'nord'
+
+    -- Define a table of themes
+    local themes = {
+      onedark = onedark_theme,
+      nord = 'nord',
+    }
+
+    local hide_in_width = function()
+      return vim.fn.winwidth(0) > 80
+    end
+
+    local mode = {
+      'mode',
+      fmt = function(str)
+        if hide_in_width() then
+          -- return ' ' .. str
+          return str
+        else
+          -- return ' ' .. str:sub(1, 1) -- displays only the first character of the mode
+          return str:sub(1, 1) -- displays only the first character of the mode
+        end
+      end,
+    }
+
+    local filename = {
+      'filename',
+      file_status = true, -- displays file status (readonly status, modified status)
+      path = 0,           -- 0 = just filename, 1 = relative path, 2 = absolute path
+    }
+
+    local ui = require("utils.ui")
+    local diagnostics = {
+      'diagnostics',
+      sources = { 'nvim_diagnostic' },
+      sections = { 'error', 'warn' },
+      symbols = {
+        error = ui.get_icon('error'),
+        warn  = ui.get_icon('warn'),
+        info  = ui.get_icon('info'),
+        hint  = ui.get_icon('hint')
+      },
+      colored = false,
+      update_in_insert = false,
+      always_visible = false,
+      cond = hide_in_width,
+    }
+
+    local diff = {
+      'diff',
+      colored = false,
+      symbols = { added = ' ', modified = ' ', removed = ' ' }, -- changes diff symbols
+      cond = hide_in_width,
+    }
+
+    require('lualine').setup {
+      options = {
+        icons_enabled = true,
+        theme = themes[env_var_nvim_theme], -- Set theme based on environment variable
+        -- Some useful glyphs:
+        -- https://www.nerdfonts.com/cheat-sheet
+        --        
+        section_separators = { left = '', right = '' },
+        component_separators = { left = '', right = '' },
+        disabled_filetypes = { 'alpha', 'neo-tree', 'Avante' },
+        always_divide_middle = true,
+      },
+      sections = {
+        lualine_a = { mode },
+        lualine_b = { 'branch' },
+        lualine_c = { filename },
+        lualine_x = { diagnostics, diff, { 'encoding', cond = hide_in_width }, { 'filetype', cond = hide_in_width } },
+        lualine_y = { 'location' },
+        lualine_z = { 'progress' },
+      },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { { 'filename', path = 1 } },
+        lualine_x = { { 'location', padding = 0 } },
+        lualine_y = {},
+        lualine_z = {},
+      },
+      tabline = {},
+      extensions = {},
+    }
+  end,
 }

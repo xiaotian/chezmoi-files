@@ -37,3 +37,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- formatting
 vim.keymap.set('n', '<leader>F', ":lua require('conform').format()<cr>", {desc = 'Format file'})
+
+-- execute selected lua code
+vim.keymap.set("v", "<C-x>", ":'<,'>lua<CR>", { desc = "Run selected Lua code" })

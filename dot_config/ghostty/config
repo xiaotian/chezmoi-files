@@ -10,7 +10,8 @@
 # ==========================
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
-font-family = Meslo #"AnonymicePro Nerd Font"
+font-family = "JetBrainsMono Nerd Font" #"AnonymicePro Nerd Font"
+#font-family = "AnonymicePro Nerd Font"
 font-size = 14
 window-padding-x = 8
 background-opacity = 0.95

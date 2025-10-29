@@ -6,6 +6,11 @@ return {
   version = '^6', -- Recommended
   lazy = false,   -- This plugin is already lazy
   ft = { 'rust' },
+  ["rust-analyzer"] = {
+    cargo = {
+      allFeatures = true,
+    }
+  },
   config = function()
     local bufnr = vim.api.nvim_get_current_buf()
     vim.keymap.set(

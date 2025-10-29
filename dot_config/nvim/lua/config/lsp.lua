@@ -8,7 +8,7 @@
 -- so in ~.config/lsp/lua_ls.lua for lua_ls, for example.
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('py_ls')
-vim.lsp.enable('rust_ls')
+-- we use rustaceanvim, so don't use this vim.lsp.enable('rust_ls')
 vim.lsp.enable('ts_ls')
 
 vim.api.nvim_create_autocmd('LspAttach', {

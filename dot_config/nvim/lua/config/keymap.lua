@@ -34,7 +34,10 @@ vim.keymap.set('n', '<leader>l', ':listchars!<CR>', { desc = 'Toggle [l]istchars
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
--- Lua execution 
+-- formatting
+vim.keymap.set('n', '<leader>F', ":lua require('conform').format()<cr>", { desc = 'Format file' })
+
+-- Lua execution
 vim.keymap.set("n", "<leader>x", function()
   local buf = vim.api.nvim_get_current_buf()
   local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)

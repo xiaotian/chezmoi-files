@@ -19,11 +19,11 @@ return {
     local dap_python = require("dap-python")
     local dap_vtext = require("nvim-dap-virtual-text")
 
-
     dapui.setup({})
     dap_vtext.setup({ commented = true })
 
     dap_python.setup("python3")
+
     vim.fn.sign_define("DapBreakpoint", {
       text = "",
       texthl = "DiagnosticSignError",
@@ -53,51 +53,57 @@ return {
     local opts = { noremap = true, silent = true }
 
     -- Toggle breakpoint
-    vim.keymap.set("n", "<leader>db", function()
+    vim.keymap.set("n", "<leader>b", function()
       dap.toggle_breakpoint()
     end, opts)
 
+
     -- Continue / Start
-    vim.keymap.set("n", "<leader>dc", function()
+    vim.keymap.set("n", "<F5>", function()
+      -- load_project_dap()
       dap.continue()
     end, opts)
 
     -- Step Over
-    vim.keymap.set("n", "<leader>do", function()
+    vim.keymap.set("n", "<F10>", function()
       dap.step_over()
     end, opts)
 
     -- Step Into
-    vim.keymap.set("n", "<leader>di", function()
-      dap.step_into()
-    end, opts)
+    vim.keymap.set("n", "<F11>", function() dap.step_into() end, opts)
 
     -- Step Out
-    vim.keymap.set("n", "<leader>dO", function()
-      dap.step_out()
-    end, opts)
+    vim.keymap.set("n", "<F12>", function() dap.step_out() end, opts)
 
     -- Keymap to terminate debugging
-    vim.keymap.set("n", "<leader>dq", function()
-      require("dap").terminate()
+    vim.keymap.set("n", "<D-F5>", function()
+      dap.terminate()
     end, opts)
 
+    vim.keymap.set("n", "<F6>", function()
+      vim.cmd("write")
+      local file = vim.fn.expand("%:p")
+      vim.cmd("botright new")
+      vim.fn.termopen("python3 " .. file)
+      vim.cmd("startinsert")
+    end, { desc = "Run Python without debugging" })
 
     -- Toggle DAP UI
     vim.keymap.set("n", "<leader>du", function()
       dapui.toggle()
     end, opts)
+
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
     end
     dap.listeners.before.launch.dapui_config = function()
       dapui.open()
     end
+
     dap.listeners.before.event_terminated.dapui_config = function()
-      dapui.close()
     end
+
     dap.listeners.before.event_exited.dapui_config = function()
-      dapui.close()
     end
   end
 }

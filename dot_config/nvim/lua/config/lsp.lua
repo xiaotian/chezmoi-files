@@ -6,10 +6,15 @@
 -- This actually just enables the lsp servers.
 -- The configuration is found in the lsp folder inside the nvim config folder,
 -- so in ~.config/lsp/lua_ls.lua for lua_ls, for example.
+
 vim.lsp.enable('lua_ls')
-vim.lsp.enable('py_ls')
--- we use rustaceanvim, so don't use this vim.lsp.enable('rust_ls')
-vim.lsp.enable('ts_ls')
+vim.lsp.enable('clangd')
+vim.lsp.enable('pyright')
+vim.lsp.enable('ruff')
+-- we use rustaceanvim, so don't use this 
+vim.lsp.enable('rust-analyzer')
+vim.lsp.enable('vtsls')
+
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
@@ -24,9 +29,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+
 -- Diagnostics
 vim.diagnostic.config({
-  virtual_text = false,  -- Disable inline virtual text
+  virtual_text = false, -- Disable inline virtual text
   float = {
     source = 'always',  -- Show source in floating window
     border = 'rounded',
@@ -40,8 +46,6 @@ vim.api.nvim_create_autocmd("CursorHold", {
   end
 })
 
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = 'Code action' })
 -- Adjust how long before floating window appears
-vim.opt.updatetime = 250  -- milliseconds
-
-
-
+vim.opt.updatetime = 250 -- milliseconds

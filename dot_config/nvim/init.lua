@@ -21,6 +21,9 @@ require("config.keymap")
 require("config.diagnostics")
 
 require("lazy").setup({
+  ui = {
+    border = "rounded",
+  },
   spec = {
     { import = "plugins" },
   },

@@ -69,3 +69,13 @@ vim.keymap.set("n", "<leader>x", function()
 end, { desc = "Run current buffer as Lua" })
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
+
+-- create augroup
+local group = vim.api.nvim_create_augroup("AutoHighlighting", { clear = true })
+
+-- toggle search highlight 
+vim.keymap.set("n", "\\\\", "<cmd>set hlsearch!<cr>", { desc = "Toggle search highlight" })
+
+-- quick fix move to next/prev
+vim.keymap.set("n", "<M-n>", "<cmd>cnext<cr>", {desc = "Move to next item in QuickFix"})
+vim.keymap.set("n", "<M-p>", "<cmd>cprev<cr>", {desc = "Move to next item in QuickFix"})

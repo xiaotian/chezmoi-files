@@ -25,7 +25,6 @@ preview_delay = 50
 # Whether to wrap long lines in the preview pane.
 wrap_preview = true
 
-
 [opener]
 play = [
 	{ run = 'mpv "$@"', orphan = true, for = "unix" },
@@ -47,7 +46,7 @@ show_spotter = true
 
 # The default program to open files. This will typically defer to your system's default applications.
 # You can also specify specific applications here, e.g., opener = "nvim"
-opener = "xdg-open" # Or "open" on macOS, or a specific editor like "nvim"
+# opener = "xdg-open" # Or "open" on macOS, or a specific editor like "nvim"
 
 # Settings for the input component (e.g., when renaming or creating files).
 [input]
@@ -63,3 +62,7 @@ show_confirm = true
 [completion]
 # Whether to automatically complete paths.
 auto_complete = true
+
+[plugin.smart-enter]
+# Whether to open all selected files (true) or just the hovered file (false)
+open_multi = false

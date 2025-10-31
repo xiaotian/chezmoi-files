@@ -18,7 +18,7 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.sidescroll = 1         -- Smooth horizontal scrolling
@@ -26,6 +26,7 @@ vim.opt.sidescrolloff = 4      -- Keep 5 columns visible when scrolling horizont
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
+vim.opt.switchbuf = "useopen,uselast"
 
 -- for neovide
 if vim.g.neovide then

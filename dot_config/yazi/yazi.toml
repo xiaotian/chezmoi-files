@@ -1,2 +1,65 @@
+# General settings for Yazi
 [mgr]
-ratio = [3,5,5]
+# Adjust the relative width of the three panes: preview, current directory, and parent directory.
+# The values are relative weights, so [1, 2, 1] means the current directory pane is twice as wide as the others.
+ratio = [3, 3, 6]
+
+# Whether to show hidden files (files starting with a dot).
+show_hidden = false
+
+# Case-sensitive sorting for files and directories.
+case_sensitive = false
+
+# Whether to put directories before files when sorting.
+sort_by_dir_first = true
+
+# Whether to use natural sorting (e.g., file1, file2, file10 instead of file1, file10, file2).
+natural_sort = true
+
+# Whether to automatically reveal the current file in the preview pane.
+reveal_on_open = true
+
+# Time in milliseconds to delay before showing a preview.
+preview_delay = 50
+
+# Whether to wrap long lines in the preview pane.
+wrap_preview = true
+
+
+[opener]
+play = [
+	{ run = 'mpv "$@"', orphan = true, for = "unix" },
+	{ run = '"C:\Program Files\mpv.exe" %*', orphan = true, for = "windows" }
+]
+edit = [
+	{ run = '$EDITOR "$@"', block = true, for = "macos" },
+	{ run = '$EDITOR "$@"', block = true, for = "unix" },
+	{ run = "%EDITOR% %*",  block = true, for = "windows" },
+]
+open = [
+  { run = 'xdg-open "$@"', desc = "Open" },
+]
+
+# Settings for the file information spotter (the 'spot' pane).
+[spotter]
+# Whether to show the file information spotter by default.
+show_spotter = true
+
+# The default program to open files. This will typically defer to your system's default applications.
+# You can also specify specific applications here, e.g., opener = "nvim"
+opener = "xdg-open" # Or "open" on macOS, or a specific editor like "nvim"
+
+# Settings for the input component (e.g., when renaming or creating files).
+[input]
+# Whether to close the input component with a single Escape press.
+close_on_esc = true
+
+# Settings for the confirmation dialog (e.g., when deleting files).
+[confirm]
+# Whether to show a confirmation dialog before performing destructive actions.
+show_confirm = true
+
+# Settings for the completion component (e.g., path completion for 'cd').
+[completion]
+# Whether to automatically complete paths.
+auto_complete = true

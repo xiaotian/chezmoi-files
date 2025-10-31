@@ -16,20 +16,20 @@ return {
     }
 
     local onedark_theme = {
-      normal = {
+      normal   = {
         a = { fg = colors.bg, bg = colors.green, gui = 'bold' },
         b = { fg = colors.fg, bg = colors.gray3 },
         c = { fg = colors.fg, bg = colors.gray2 },
       },
       command  = { a = { fg = colors.bg, bg = colors.yellow, gui = 'bold' } },
-      insert   = { a = { fg = colors.bg, bg = colors.blue,   gui = 'bold' } },
+      insert   = { a = { fg = colors.bg, bg = colors.blue, gui = 'bold' } },
       visual   = { a = { fg = colors.bg, bg = colors.purple, gui = 'bold' } },
-      terminal = { a = { fg = colors.bg, bg = colors.cyan,   gui = 'bold' } },
+      terminal = { a = { fg = colors.bg, bg = colors.cyan, gui = 'bold' } },
       replace  = { a = { fg = colors.bg, bg = colors.yellow, gui = 'bold' } },
       inactive = {
-                   a = { fg = colors.gray1, bg = colors.bg,  gui = 'bold' },
-                   b = { fg = colors.gray1, bg = colors.bg },
-                   c = { fg = colors.gray1, bg = colors.gray2 },
+        a = { fg = colors.gray1, bg = colors.bg, gui = 'bold' },
+        b = { fg = colors.gray1, bg = colors.bg },
+        c = { fg = colors.gray1, bg = colors.gray2 },
       },
     }
 
@@ -105,7 +105,11 @@ return {
         lualine_a = { mode },
         lualine_b = { 'branch' },
         lualine_c = { filename },
-        lualine_x = { diagnostics, diff, { 'encoding', cond = hide_in_width }, { 'filetype', cond = hide_in_width } },
+        lualine_x = {
+          diagnostics,
+          diff,
+          { 'encoding', cond = hide_in_width },
+          { 'filetype', cond = hide_in_width } },
         lualine_y = { 'location' },
         lualine_z = { 'progress' },
       },

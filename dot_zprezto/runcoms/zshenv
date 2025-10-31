@@ -10,8 +10,9 @@ fi
 
 [[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
+export XDG_CONFIG_HOME=~/.config
 # uv
 export PATH="$HOME/.local/bin:$PATH"

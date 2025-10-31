@@ -55,30 +55,32 @@ return {
     -- Toggle breakpoint
     vim.keymap.set("n", "<leader>b", function()
       dap.toggle_breakpoint()
-    end, opts)
+    end, vim.tbl_extend("force", opts, { desc = "Toggle Breakpoint" }))
 
 
     -- Continue / Start
     vim.keymap.set("n", "<F5>", function()
       -- load_project_dap()
       dap.continue()
-    end, opts)
+    end, vim.tbl_extend("force", opts, { desc = "Start/Continue" }))
 
     -- Step Over
     vim.keymap.set("n", "<F10>", function()
       dap.step_over()
-    end, opts)
+    end, vim.tbl_extend("force", opts, { desc = "Step Over" }))
 
     -- Step Into
-    vim.keymap.set("n", "<F11>", function() dap.step_into() end, opts)
+    vim.keymap.set("n", "<F11>", function() dap.step_into() end
+    , vim.tbl_extend("force", opts, { desc = "Step Into" }))
 
     -- Step Out
-    vim.keymap.set("n", "<F12>", function() dap.step_out() end, opts)
+    vim.keymap.set("n", "<F12>", function() dap.step_out() end
+    , vim.tbl_extend("force", opts, { desc = "Step Out" }))
 
     -- Keymap to terminate debugging
     vim.keymap.set("n", "<D-F5>", function()
       dap.terminate()
-    end, opts)
+    end, vim.tbl_extend("force", opts, { desc = "Terminate" }))
 
     vim.keymap.set("n", "<F6>", function()
       vim.cmd("write")
@@ -86,12 +88,34 @@ return {
       vim.cmd("botright new")
       vim.fn.termopen("python3 " .. file)
       vim.cmd("startinsert")
-    end, { desc = "Run Python without debugging" })
+    end, vim.tbl_extend("force", opts, { desc = "Run Python without debugging" }))
 
+    dapui.setup({
+      layouts = {
+        {
+          elements = {
+            { id = "scopes",      size = 0.25 },
+            { id = "breakpoints", size = 0.25 },
+            { id = "stacks",      size = 0.25 },
+            { id = "watches",     size = 0.25 },
+          },
+          size = 40,
+          position = "left",
+        },
+        {
+          elements = {
+            { id = "repl",    size = 0.5 },
+            { id = "console", size = 0.5 },
+          },
+          size = 10,
+          position = "bottom",
+        },
+      },
+    })
     -- Toggle DAP UI
     vim.keymap.set("n", "<leader>du", function()
       dapui.toggle()
-    end, opts)
+    end, vim.tbl_extend("force", opts, { desc = "Toggle Debugger UI" }))
 
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
@@ -99,10 +123,8 @@ return {
     dap.listeners.before.launch.dapui_config = function()
       dapui.open()
     end
-
     dap.listeners.before.event_terminated.dapui_config = function()
     end
-
     dap.listeners.before.event_exited.dapui_config = function()
     end
   end

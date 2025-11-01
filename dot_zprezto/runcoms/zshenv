@@ -2,7 +2,7 @@
 # Defines environment variables.
 
 PATH="/opt/homebrew/bin:$PATH"
-
+export HOMEBREW_BUNDLE_FILE="~/.config/Brewfile"
 # Ensure that a non-login, non-interactive shell has a defined environment.
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"

@@ -46,7 +46,7 @@ show_spotter = true
 
 # The default program to open files. This will typically defer to your system's default applications.
 # You can also specify specific applications here, e.g., opener = "nvim"
-# opener = "xdg-open" # Or "open" on macOS, or a specific editor like "nvim"
+opener = "xdg-open" # Or "open" on macOS, or a specific editor like "nvim"
 
 # Settings for the input component (e.g., when renaming or creating files).
 [input]

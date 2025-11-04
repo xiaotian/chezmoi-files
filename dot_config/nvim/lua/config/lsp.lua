@@ -11,7 +11,7 @@ vim.lsp.enable('lua_ls')
 vim.lsp.enable('clangd')
 vim.lsp.enable('pyright')
 vim.lsp.enable('ruff')
--- we use rustaceanvim, so don't use this 
+-- we use rustaceanvim, so don't use this
 vim.lsp.enable('rust-analyzer')
 vim.lsp.enable('vtsls')
 
@@ -45,6 +45,29 @@ vim.api.nvim_create_autocmd("CursorHold", {
     vim.diagnostic.open_float(nil, { focus = false })
   end
 })
+
+-- Hover documentation
+vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = 'rounded' }) end, { desc = "Hover documentation" })
+
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = 'Go to definition' })
+
+-- Go to declaration
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+
+-- Go to implementation
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+
+-- Show type definition
+vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+
+-- Show references
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "List references" })
+
+-- Rename symbol
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+
+-- Signature help (function parameters)
+vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "Signature help" })
 
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = 'Code action' })
 -- Adjust how long before floating window appears

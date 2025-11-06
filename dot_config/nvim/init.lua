@@ -19,6 +19,7 @@ require("config.options")
 require("config.lsp")
 require("config.keymap")
 require("config.diagnostics")
+require("config.autocmds")
 
 require("lazy").setup({
   ui = {

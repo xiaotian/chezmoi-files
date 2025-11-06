@@ -9,6 +9,8 @@ vim.g.maplocalleader = " "
 
 vim.g.have_nerd_font = true
 
+vim.g.pyindent_open_paren = vim.opt.shiftwidth
+
 -- adding a ':Config' command 
 vim.api.nvim_create_user_command('Config', 'edit $MYVIMRC', {})
 

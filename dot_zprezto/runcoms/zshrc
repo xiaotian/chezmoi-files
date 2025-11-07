@@ -49,7 +49,7 @@ alias cm='chezmoi'
 alias blr='/Applications/Blender.app/Contents/MacOS/Blender'
 alias vim='nvim'
 alias vi='nvim'
-
+alias ff='fastfetch'
 # ========================= ESP32 ====================
 
 alias idfinit='source ~/tools/esp/esp-idf/export.sh'
@@ -60,4 +60,3 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 if [[ -s ".secret_keys" ]]; then
   source .secret_keys
 fi
-

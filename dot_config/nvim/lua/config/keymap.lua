@@ -26,6 +26,14 @@ vim.keymap.set({ 'n', 'x' }, '<leader>y', '"+y', { desc = 'Copy to system clipbo
 vim.keymap.set({ 'n', 'x' }, '<leader>p', '"+p', { desc = 'Paste from system clipboard after the cursor position' })
 vim.keymap.set({ 'n', 'x' }, '<leader>P', '"+P', { desc = 'Paste from system clipboard before the cursor position' })
 
+-- folding column
+vim.keymap.set('n', '<leader>vf', function()
+  if vim.opt.foldcolumn:get() == "0" then
+    vim.opt.foldcolumn = "1"
+  else
+    vim.opt.foldcolumn = "0"
+  end
+end, { desc = "Toggle Fold Column" })
 
 -- Toggle visible whitespace characters
 vim.keymap.set('n', '<leader>l', ':listchars!<CR>', { desc = 'Toggle [l]istchars' })

@@ -60,3 +60,5 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 if [[ -s ".secret_keys" ]]; then
   source .secret_keys
 fi
+
+export HOMEBREW_AUTO_UPDATE_SECS=604800 # auto update every week

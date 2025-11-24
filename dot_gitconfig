@@ -2,7 +2,7 @@
 	name = Xiaotian Guo
 	email = guoxiaotian@gmail.com
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = /Users/xiaotian/.gitignore_global
 [alias]
 	co = checkout

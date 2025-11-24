@@ -34,17 +34,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.diagnostic.config({
   virtual_text = false, -- Disable inline virtual text
   float = {
-    source = 'always',  -- Show source in floating window
+    source = 'if_many',  -- Show source in floating window
     border = 'rounded',
   },
 })
 
 -- Show diagnostic in floating window when cursor holds
-vim.api.nvim_create_autocmd("CursorHold", {
-  callback = function()
-    vim.diagnostic.open_float(nil, { focus = false })
-  end
-})
+-- vim.api.nvim_create_autocmd("CursorHold", {
+--   callback = function()
+--     vim.diagnostic.open_float(nil, { focus = false })
+--   end
+-- })
+
+vim.keymap.set('n', 'M', function()
+  vim.diagnostic.open_float(nil, { focus = false })
+end, { desc = 'Show diagnostics' })
 
 -- Hover documentation
 vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = 'rounded' }) end, { desc = "Hover documentation" })

@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- Diagnostics
 vim.diagnostic.config({
-  virtual_text = false, -- Disable inline virtual text
+  virtual_text = true, -- False to disable inline virtual text
   float = {
     source = 'if_many',  -- Show source in floating window
     border = 'rounded',

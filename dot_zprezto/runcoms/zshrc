@@ -56,6 +56,7 @@ alias idfinit='source ~/tools/esp/esp-idf/export.sh'
 
 # ====================================================
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 if [[ -s ".secret_keys" ]]; then
   source .secret_keys

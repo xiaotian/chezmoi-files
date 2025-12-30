@@ -55,6 +55,10 @@ path=(
   $path
 )
 
+if [[ -s "${ZDOTDIR:-$HOME}/.zsh_api_keys" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zsh_api_keys"
+fi
+
 #
 # Less
 #

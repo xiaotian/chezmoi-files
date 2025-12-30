@@ -87,3 +87,27 @@ vim.keymap.set("n", "\\\\", "<cmd>set hlsearch!<cr>", { desc = "Toggle search hi
 -- quick fix move to next/prev
 vim.keymap.set("n", "<M-n>", "<cmd>cnext<cr>", { desc = "Move to next item in QuickFix" })
 vim.keymap.set("n", "<M-p>", "<cmd>cprev<cr>", { desc = "Move to next item in QuickFix" })
+
+
+-- Disable F1 in Normal ('n') and Insert ('i') modes, prevent mis-type when hit ESC key
+vim.keymap.set({ 'n', 'i', 'v' }, '<F1>', '<Nop>', { silent = true })
+
+-- CMD + F1 toggle help window
+local function toggle_help()
+  local found_help = false
+  -- Check all open windows
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    -- If we find a buffer with filetype 'help'
+    if vim.bo[buf].filetype == 'help' then
+      vim.api.nvim_win_close(win, true) -- Close it
+      found_help = true
+    end
+  end
+
+  -- If no help window was found, open one
+  if not found_help then
+    vim.cmd('help')
+  end
+end
+vim.keymap.set({ 'n', 'i' }, '<D-F1>', toggle_help, { silent = true })

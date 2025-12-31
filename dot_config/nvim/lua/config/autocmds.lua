@@ -23,3 +23,7 @@ vim.api.nvim_create_autocmd("FileType", {
         end
     end,
 })
+
+-- disable auto insert comments, very annoying for end of line comments in C/C++, Rust
+vim.cmd('autocmd BufEnter * set formatoptions-=cro')
+vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')

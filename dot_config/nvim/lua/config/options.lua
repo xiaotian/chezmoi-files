@@ -25,6 +25,7 @@ vim.opt.sidescroll = 1         -- Smooth horizontal scrolling
 vim.opt.sidescrolloff = 4      -- Keep 5 columns visible when scrolling horizontally
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
+vim.opt.splitbelow = true      -- Open horizontal splits below current window
 vim.opt.isfname:append("@-@")
 vim.opt.switchbuf = "useopen,uselast"
 

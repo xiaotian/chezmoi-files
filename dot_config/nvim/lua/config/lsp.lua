@@ -14,6 +14,7 @@ vim.lsp.enable('ruff')
 -- we use rustaceanvim, so don't use this
 vim.lsp.enable('rust-analyzer')
 vim.lsp.enable('vtsls')
+vim.lsp.enable('protobuf')
 
 
 vim.api.nvim_create_autocmd('LspAttach', {

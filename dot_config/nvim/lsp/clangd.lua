@@ -11,7 +11,7 @@ return {
     '--log=error',
   },
 
-  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto', 'arduino' },
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'arduino' },
 
   root_markers = {
     'compile_commands.json',

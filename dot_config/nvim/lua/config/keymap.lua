@@ -13,6 +13,9 @@ vim.keymap.set({ 'n', 'x' }, '<Up>', 'gk', { desc = 'Navigate up (visual line)' 
 vim.keymap.set('i', '<Down>', '<C-\\><C-o>gj', { desc = 'Navigate down (visual line)' })
 vim.keymap.set('i', '<Up>', '<C-\\><C-o>gk', { desc = 'Navigate up (visual line)' })
 
+-- Disable default LSP 'K' hover keybinding (from Neovim 0.11+)
+vim.keymap.set('n', 'K', '<Nop>', { desc = 'Disabled (use <leader>ci for hover)' })
+
 -- Move current line up/down
 vim.keymap.set("n", "<M-j>", ":m .+1<CR>==", { desc = "Move line down" })
 vim.keymap.set("n", "<M-k>", ":m .-2<CR>==", { desc = "Move line up" })

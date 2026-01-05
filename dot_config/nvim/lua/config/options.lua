@@ -29,6 +29,9 @@ vim.opt.splitbelow = true      -- Open horizontal splits below current window
 vim.opt.isfname:append("@-@")
 vim.opt.switchbuf = "useopen,uselast"
 
+-- Adjust how long before floating window appears
+vim.opt.updatetime = 250 -- milliseconds
+
 -- for neovide
 if vim.g.neovide then
   vim.opt.guifont = "MesloLGSDZ Nerd Font Mono:h14"

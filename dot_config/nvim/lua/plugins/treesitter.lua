@@ -12,7 +12,8 @@ return {
 				"javascript", "typescript",
 				"yaml", "xml", "json",
 				"lua", "vim", "vimdoc", "query", "markdown", "markdown_inline",
-				"tmux"
+				"tmux",
+				"proto"
 			},
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)

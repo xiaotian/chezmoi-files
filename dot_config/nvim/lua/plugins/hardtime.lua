@@ -3,7 +3,8 @@ return {
   lazy = false,
   dependencies = { "MunifTanjim/nui.nvim" },
   opts = {
-    enabled = true
+    enabled = true,
+    disable_mouse = false,
   },
   config = function(_, opt)
     require("hardtime").setup(opt)

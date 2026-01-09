@@ -24,6 +24,36 @@ return {
 
         dap_python.setup("python3")
 
+        -- Attach to running Python process (requires debugpy listening)
+        table.insert(dap.configurations.python, {
+            type = "python",
+            request = "attach",
+            name = "Attach to running process (port 5678)",
+            connect = {
+                host = "127.0.0.1",
+                port = 5678,
+            },
+        })
+
+        -- Attach configuration for C/C++/Rust via codelldb
+        dap.configurations.c = dap.configurations.c or {}
+        table.insert(dap.configurations.c, {
+            name = "Attach to process",
+            type = "codelldb",
+            request = "attach",
+            pid = require('dap.utils').pick_process,
+            args = {},
+        })
+        dap.configurations.cpp = dap.configurations.c
+        dap.configurations.rust = dap.configurations.rust or {}
+        table.insert(dap.configurations.rust, {
+            name = "Attach to process",
+            type = "codelldb",
+            request = "attach",
+            pid = require('dap.utils').pick_process,
+            args = {},
+        })
+
         vim.fn.sign_define("DapBreakpoint", {
             text = "",
             texthl = "DiagnosticSignError",
@@ -78,7 +108,7 @@ return {
         , vim.tbl_extend("force", opts, { desc = "Step Out" }))
 
         -- Keymap to terminate debugging
-        vim.keymap.set("n", "<D-F5>", function()
+        vim.keymap.set("n", "<F4>", function()
             dap.terminate()
         end, vim.tbl_extend("force", opts, { desc = "Terminate" }))
 
@@ -116,6 +146,11 @@ return {
         vim.keymap.set("n", "<leader>du", function()
             dapui.toggle({ reset = true })
         end, vim.tbl_extend("force", opts, { desc = "Reset Debugger UI" }))
+
+        -- Attach to running process
+        vim.keymap.set("n", "<leader>da", function()
+            dap.continue({ new = true })
+        end, vim.tbl_extend("force", opts, { desc = "Debug Attach (select config)" }))
         dap.listeners.before.attach.dapui_config = function()
             dapui.open()
         end

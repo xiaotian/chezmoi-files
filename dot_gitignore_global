@@ -10,6 +10,7 @@ desktop.ini
 
 # IDE/Editor Files
 # Editor/IDE
+.claude
 *.swp
 *.swo
 *~
@@ -38,6 +39,7 @@ yarn-error.log
 vendor/ 
 target/ 
 build/ 
+log/
 *.log 
 *.bak 
 *.swp 

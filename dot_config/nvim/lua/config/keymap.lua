@@ -2,8 +2,9 @@
 --------------------------------------------------------------------------------
 
 vim.keymap.set('n', '<leader>w', ':set wrap!<CR>', { desc = 'Toggle line wrap' })
-vim.keymap.set('n', '<Tab>', ':bnext<CR>', { desc = 'Next buffer' })
-vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { desc = 'Previous buffer' })
+-- disable, we use cybu plugin
+-- vim.keymap.set('n', '<Tab>', ':bnext<CR>', { desc = 'Next buffer' })
+-- vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { desc = 'Previous buffer' })
 
 -- Navigate visual lines
 vim.keymap.set({ 'n', 'x' }, 'j', 'gj', { desc = 'Navigate down (visual line)' })

@@ -8,10 +8,10 @@ return {
     { '<leader>tp', '<cmd>FloatermPrev<cr>',   desc = 'Previous terminal' },
     { '<leader>tn', '<cmd>FloatermNext<cr>',   desc = 'Next terminal' },
 
-    { '<M-w>', '<cmd>FloatermToggle<cr>', desc = 'Toggle terminal', mode = { 't' } },
-    { '<M-c>', '<cmd>FloatermNew<cr>',    desc = 'New terminal', mode = { 't' } },
-    { '<M-,>', '<cmd>FloatermPrev<cr>',   desc = 'Previous terminal', mode = {'t'}},
-    { '<M-.>', '<cmd>FloatermNext<cr>',   desc = 'Next terminal', mode = {'t'}},
+    { '<M-w>', '<cmd>FloatermToggle<cr>', desc = 'Toggle terminal', mode = {'n', 't' } },
+    { '<M-c>', '<cmd>FloatermNew<cr>',    desc = 'New terminal', mode = { 'n', 't' } },
+    { '<M-,>', '<cmd>FloatermPrev<cr>',   desc = 'Previous terminal', mode = {'n','t'}},
+    { '<M-.>', '<cmd>FloatermNext<cr>',   desc = 'Next terminal', mode = {'n', 't'}},
   },
   config = function()
     vim.g.floaterm_width = 0.75

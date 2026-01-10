@@ -10,7 +10,7 @@ return {
             return
         end
         cybu.setup({
-            display_time = 450,
+            display_time = 1000,
             position = {
                 -- relative_to = "win", -- win, editor, cursor
                 -- anchor = "topcenter", -- topleft, topcenter, topright,

@@ -6,6 +6,10 @@ return {
     version = '^6', -- Recommended
     lazy = false,   -- This plugin is already lazy
     init = function()
+        -- Get Rust toolchain paths for source mapping
+        local rust_sysroot = vim.fn.system("rustc --print sysroot"):gsub("%s+", "")
+        local rust_hash = vim.fn.system("rustc --version --verbose | grep 'commit-hash' | awk '{print $2}'"):gsub("%s+", "")
+
         -- Configure rustaceanvim before it loads
         vim.g.rustaceanvim = {
             server = {
@@ -16,6 +20,27 @@ return {
                         },
                     },
                 },
+            },
+            dap = {
+                configuration = function(adapter)
+                    return {
+                        name = "Rust Debug",
+                        type = "codelldb",
+                        request = "launch",
+                        initCommands = {
+                            -- Source map for Rust stdlib
+                            string.format(
+                                'settings set target.source-map /rustc/%s "%s/lib/rustlib/src/rust"',
+                                rust_hash,
+                                rust_sysroot
+                            ),
+                            -- Disable step filter to allow stepping into std library
+                            "settings set target.process.thread.step-avoid-regexp ''",
+                            -- Allow stepping into code without debug info
+                            "settings set target.process.thread.step-in-avoid-nodebug false",
+                        },
+                    }
+                end,
             },
         }
     end,
@@ -41,5 +66,16 @@ return {
             end
             vim.cmd.RustLsp('runnables')
         end, { desc = 'Select target to run' })
+
+        -- Verify Rust source map configuration
+        vim.keymap.set("n", "<leader>dv", function()
+            -- Get Rust toolchain paths for source mapping
+            local rust_sysroot = vim.fn.system("rustc --print sysroot"):gsub("%s+", "")
+            local rust_hash = vim.fn.system("rustc --version --verbose | grep 'commit-hash' | awk '{print $2}'"):gsub("%s+", "")
+            print("Rust sysroot: " .. rust_sysroot)
+            print("Rust hash: " .. rust_hash)
+            print("Source map: /rustc/" .. rust_hash .. " -> " .. rust_sysroot .. "/lib/rustlib/src/rust")
+        end, { desc = "Verify Rust source map config" })
+
     end
 }

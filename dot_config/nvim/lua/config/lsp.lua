@@ -15,6 +15,7 @@ vim.lsp.enable('ruff')
 -- vim.lsp.enable('rust-analyzer')
 vim.lsp.enable('vtsls')
 vim.lsp.enable('protobuf')
+vim.lsp.enable('yamlls')
 
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -76,3 +77,23 @@ vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "List references" })
 
 -- Signature help (function parameters)
 vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "Signature help" })
+
+-- Custom command to show LSP info
+vim.api.nvim_create_user_command('ShowLsp', function()
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+    if #clients == 0 then
+        print("No LSP clients attached to current buffer")
+        return
+    end
+
+    print("LSP clients attached to current buffer:")
+    for _, client in ipairs(clients) do
+        print(string.format("  - %s (id: %d)", client.name, client.id))
+    end
+
+    print("\nAll active LSP clients:")
+    local all_clients = vim.lsp.get_clients()
+    for _, client in ipairs(all_clients) do
+        print(string.format("  - %s (id: %d)", client.name, client.id))
+    end
+end, { desc = "Show LSP client information" })

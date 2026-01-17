@@ -2,7 +2,7 @@ return {
   'voldikss/vim-floaterm',
   keys = {
     { '<leader>tt', '<cmd>FloatermToggle<cr>', desc = 'Toggle terminal', mode = { 'n' } },
-    { '<Esc><Esc>', '<cmd>FloatermToggle<cr>', desc = 'Toggle terminal', mode = { 't' } },
+    -- { '<Esc><Esc>', '<cmd>FloatermToggle<cr>', desc = 'Toggle terminal', mode = { 't' } },
     { '<leader>tc', '<cmd>FloatermNew<cr>',    desc = 'New terminal' },
     { '<leader>tk', '<cmd>FloatermKill<cr>',   desc = 'Kill terminal' },
     { '<leader>tp', '<cmd>FloatermPrev<cr>',   desc = 'Previous terminal' },

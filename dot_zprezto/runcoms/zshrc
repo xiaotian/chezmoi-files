@@ -63,3 +63,6 @@ if [[ -s ".secret_keys" ]]; then
 fi
 
 export HOMEBREW_AUTO_UPDATE_SECS=604800 # auto update every week
+
+# opencode
+export PATH=/Users/xiaotian/.opencode/bin:$PATH

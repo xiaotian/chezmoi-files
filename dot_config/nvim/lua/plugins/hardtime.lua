@@ -5,6 +5,15 @@ return {
   opts = {
     enabled = true,
     disable_mouse = false,
+    max_time = 2000,
+    max_count = 8,
+    timeout = 50,
+    disabled_keys = {
+      ["<Up>"] = {},
+      ["<Down>"] = {},
+      ["<Left>"] = {},
+      ["<Right>"] = {},
+    },
   },
   config = function(_, opt)
     require("hardtime").setup(opt)

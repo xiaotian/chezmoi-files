@@ -27,3 +27,14 @@ vim.api.nvim_create_autocmd("FileType", {
 -- disable auto insert comments, very annoying for end of line comments in C/C++, Rust
 vim.cmd('autocmd BufEnter * set formatoptions-=cro')
 vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
+
+local function set_neotree_statusline_highlights()
+    vim.api.nvim_set_hl(0, "NeoTreeStatusLine", { link = "lualine_c_normal" })
+    vim.api.nvim_set_hl(0, "NeoTreeStatusLineNC", { link = "lualine_c_inactive" })
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+    callback = set_neotree_statusline_highlights,
+})
+
+set_neotree_statusline_highlights()

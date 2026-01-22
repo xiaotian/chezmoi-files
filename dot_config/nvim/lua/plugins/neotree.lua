@@ -8,7 +8,9 @@ return {
   },
   lazy = false,                    -- neo-tree will lazily load itself,
   config = function()
-    vim.keymap.set('n', '<leader>n', '<cmd>Neotree toggle<CR>', { desc = 'Toggle Neo-tree' })
+    vim.keymap.set('n', '<leader>n', function()
+      require('utils.ui').toggle_left_sidebar()
+    end, { desc = 'Toggle left sidebar' })
     vim.keymap.set('n', '<leader>.', '<cmd>Neotree reveal reveal_force_cwd<CR>', { desc = 'Reveal current buffer in Neotree' })
 
     -- Fire git event to refresh neo-tree git status

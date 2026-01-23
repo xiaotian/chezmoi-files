@@ -22,6 +22,7 @@ return {
                 },
             },
             dap = {
+                load_rust_types = true,
                 configuration = function(adapter)
                     return {
                         name = "Rust Debug",

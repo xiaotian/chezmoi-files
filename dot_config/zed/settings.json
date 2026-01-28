@@ -7,28 +7,35 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "vim": {
+    "use_system_clipboard": "never",
+    "toggle_relative_line_numbers": true,
+    "leader": "space"
+  },
+  "relative_line_numbers": "disabled",
+  "vim_mode": true,
   "agent": {
     "model_parameters": [],
     "play_sound_when_agent_done": true,
-    "version": "2"
   },
-  "ui_font_size": 17,
-  "buffer_font_size": null,
-  "buffer_font_family": "Meslo",
+  "ui_font_size": 15,
+  "ui_font_family": ".SystemUIFont",
+  "buffer_font_size": 15,
+  "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_line_height": "comfortable",
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "One Dark"
+    "dark": "Neovim Mocha",
   },
   "terminal": {
     "line_height": "standard",
     // Set the terminal's font size. If this option is not included,
     // the terminal will default to matching the buffer's font size.
-    "font_size": 14,
+    "font_size": 12,
     // Set the terminal's font family. If this option is not included,
     // the terminal will default to matching the buffer's font family.
-    "font_family": "Meslo",
+    "font_family": "JetBrainsMono Nerd Font",
     // Set the terminal's font fallbacks. If this option is not included,
     // the terminal will default to matching the buffer's font fallbacks.
     // This will be merged with the platform's default font fallbacks
@@ -36,6 +43,23 @@
     // Sets the maximum number of lines in the terminal's scrollback buffer.
     // Default: 10_000, maximum: 100_000 (all bigger values set will be treated as 100_000), 0 disables the scrolling.
     // Existing terminals will not pick up this change until they are recreated.
-    "max_scroll_history_lines": 10000
-  }
+    "max_scroll_history_lines": 10000,
+  },
+  "project_panel": {
+    "entry_spacing": "standard",
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": {
+          "command": "clippy"
+        }
+      }
+    }
+  },
+  "languages": {
+    "Rust": {
+      "language_servers": ["rust-analyzer"]
+    }
+  },
 }

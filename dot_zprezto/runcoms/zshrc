@@ -50,6 +50,8 @@ alias blr='/Applications/Blender.app/Contents/MacOS/Blender'
 alias vim='nvim'
 alias vi='nvim'
 alias ff='fastfetch'
+alias kc='kubectl'
+alias ls='eza'
 # ========================= ESP32 ====================
 
 alias idfinit='source ~/tools/esp/esp-idf/export.sh'

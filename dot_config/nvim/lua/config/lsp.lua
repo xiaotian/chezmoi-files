@@ -16,6 +16,7 @@ vim.lsp.enable('ruff')
 vim.lsp.enable('vtsls')
 vim.lsp.enable('protobuf')
 vim.lsp.enable('yamlls')
+vim.lsp.enable('jsonls')
 
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -60,6 +61,42 @@ end, { desc = "Hover documentation" })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = 'Code action' })
 -- Rename symbol
 vim.keymap.set("n", "<leader>cc", vim.lsp.buf.rename, { desc = "Rename symbol" })
+vim.keymap.set("n", "<leader>cr", function()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local clients = vim.lsp.get_clients({ bufnr = bufnr })
+    if #clients == 0 then
+        vim.notify("No LSP clients attached", vim.log.levels.WARN)
+        return
+    end
+
+    local client_names = {}
+    for _, client in ipairs(clients) do
+        table.insert(client_names, client.name)
+        client:stop()
+    end
+
+    vim.notify("Restarting LSP: " .. table.concat(client_names, ", "))
+
+    -- Poll until all clients have fully stopped, then reload the buffer
+    -- to re-trigger LSP attachment via vim.lsp.enable() / filetype matching
+    local timer = vim.uv.new_timer()
+    local attempts = 0
+    timer:start(100, 100, vim.schedule_wrap(function()
+        attempts = attempts + 1
+        local still_running = false
+        for _, name in ipairs(client_names) do
+            if #vim.lsp.get_clients({ name = name }) > 0 then
+                still_running = true
+                break
+            end
+        end
+        if not still_running or attempts > 50 then
+            timer:stop()
+            timer:close()
+            vim.cmd('edit')
+        end
+    end))
+end, { desc = "Restart LSP" })
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = 'Go to definition' })
 

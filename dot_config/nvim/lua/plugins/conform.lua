@@ -7,6 +7,7 @@ return {
         lua = { lsp_format = "prefer" },
         yaml = { lsp_format = "prefer" },
         json = { lsp_format = "prefer" },
+        toml = { lsp_format = "prefer" },
         -- Conform will run multiple formatters sequentially
         python = { "isort", "black" },
 

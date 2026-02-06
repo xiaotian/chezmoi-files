@@ -142,6 +142,12 @@ return {
                 },
             },
         })
+        -- Navigate stack frames
+        vim.keymap.set("n", "<leader>dk", function() dap.up() end,
+            vim.tbl_extend("force", opts, { desc = "Go up in stack frame" }))
+        vim.keymap.set("n", "<leader>dj", function() dap.down() end,
+            vim.tbl_extend("force", opts, { desc = "Go down in stack frame" }))
+
         -- Toggle DAP UI
         vim.keymap.set("n", "<leader>du", function()
             dapui.toggle({ reset = true })

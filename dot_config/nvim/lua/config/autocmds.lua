@@ -38,3 +38,16 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 })
 
 set_neotree_statusline_highlights()
+
+-- Disable yamlls diagnostics for helm files to prevent Go template syntax errors
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "helm",
+    callback = function(args)
+        local clients = vim.lsp.get_clients({ bufnr = args.buf })
+        for _, client in ipairs(clients) do
+            if client.name == "yamlls" then
+                vim.lsp.buf_detach_client(args.buf, client.id)
+            end
+        end
+    end,
+})

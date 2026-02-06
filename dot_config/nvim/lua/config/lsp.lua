@@ -17,6 +17,7 @@ vim.lsp.enable('vtsls')
 vim.lsp.enable('protobuf')
 vim.lsp.enable('yamlls')
 vim.lsp.enable('jsonls')
+vim.lsp.enable('taplo')
 
 
 vim.api.nvim_create_autocmd('LspAttach', {

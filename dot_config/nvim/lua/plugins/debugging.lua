@@ -22,7 +22,8 @@ return {
         dapui.setup({})
         dap_vtext.setup({ commented = true })
 
-        dap_python.setup("python3")
+        local mason_debugpy = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
+        dap_python.setup(mason_debugpy)
 
         -- Attach to running Python process (requires debugpy listening)
         table.insert(dap.configurations.python, {

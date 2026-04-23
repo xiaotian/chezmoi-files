@@ -20,6 +20,10 @@ return {
             require("opencode").ask("@this: ", { submit = true })
         end, { desc = "Ask opencode…" })
 
+        vim.keymap.set({ "n", "v" }, "<leader>ap", function()
+            require("opencode").ask("@this: ", { submit = false })
+        end, { desc = "Ask opencode…" })
+
         vim.keymap.set({ "n", "v" }, "<leader>as", function()
             require("opencode").select()
         end, { desc = "Execute opencode action…" })

@@ -51,7 +51,8 @@ alias vim='nvim'
 alias vi='nvim'
 alias ff='fastfetch'
 alias kc='kubectl'
-alias ls='eza'
+alias ls='eza --icons=auto'
+alias lt='eza -T --icons=auto'
 # ========================= ESP32 ====================
 
 alias idfinit='source ~/tools/esp/esp-idf/export.sh'
@@ -70,3 +71,8 @@ export HOMEBREW_AUTO_UPDATE_SECS=604800 # auto update every week
 export PATH=/Users/xiaotian/.opencode/bin:$PATH
 
 eval "$(zoxide init zsh)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/xiaotian/.lmstudio/bin"
+# End of LM Studio CLI section
+

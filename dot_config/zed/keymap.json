@@ -13,8 +13,9 @@
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-j": "workspace::ActivatePaneDown",
       "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-l": "workspace::ActivatePaneRight"
-    }
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "cmd-alt-.": "project_panel::ToggleHideHidden",
+    },
   },
   {
     "context": "Editor",
@@ -22,8 +23,8 @@
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-j": "workspace::ActivatePaneDown",
       "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-l": "workspace::ActivatePaneRight"
-    }
+      "ctrl-l": "workspace::ActivatePaneRight",
+    },
   },
   {
     "context": "Editor && vim_mode == normal",
@@ -36,19 +37,25 @@
       "space c c": "editor::Rename",
       "shift-m": "editor::Hover",
       "space c i": "editor::Hover",
-      "space t t": "terminal_panel::Toggle"
-    }
+      "space t t": "terminal_panel::Toggle",
+    },
   },
   {
     "context": "Editor && vim_mode == insert && !menu",
     "bindings": {
       // "j k": "vim::SwitchToNormalMode"
-    }
+    },
   },
   {
-    // "context": "Terminal",
-    // "bindings": {
-    //   // "alt-enter": ["terminal::SendKeystroke", "alt+enter"]
-    // }
-  }
+    "context": "ProjectPanel",
+    "bindings": {
+    },
+  },
+  // {
+  //   "context": "Terminal",
+  //   "bindings": {
+  //     "alt-enter": ["terminal::SendKeystroke", "alt+enter"],
+  //     "space t t": "terminal_panel::Toggle"
+  //   }
+  // }
 ]
